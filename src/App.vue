@@ -1,28 +1,72 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="has-topber has-aside">
+    <Header></Header>
+    <div class="aside-wrap">
+      <Aside></Aside>
+    </div>
+    <div class="main-wrap">
+      <router-view/>
+    </div>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+  import Header from "@/components/header.vue";
+  import Aside from "@/components/Aside.vue";
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Aside
   }
 }
 </script>
+<style lang="scss">
+html,body{
+  margin: 0px;
+  padding: 0px;
+}
+.has-topber{
+  padding-top:80px;
+  .aside-wrap{
+    top:80px;
+  }
+  .header{
+    top:0px;
+  }
+}
+.has-aside{
+  padding-left: 200px;
 
-<style>
+}
+
+.aside-wrap{
+  position: fixed;
+  left:0px;
+  bottom: 0px;
+  border-right: 1px solid #e2e2e2;
+  width:200px;
+  margin-right:20px;
+  background:#f0f0f0;
+  overflow:auto;
+}
+.main-wrap{
+  margin: 0px 10px;
+}
+
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
