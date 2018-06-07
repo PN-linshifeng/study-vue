@@ -8,10 +8,15 @@
 						<li>
 							<router-link to="/router-match">动态路由匹配</router-link>
 						</li>
+						<li>
+							<router-link to="/router-nested">嵌套路由</router-link>
+						</li>
+						<li>
+							<router-link to="/router-nav">编程式的导航</router-link>
+						</li>
 					</ul>
 				</div>
 			</li>
-			
 		</ul>
 	</div>
 </template>	

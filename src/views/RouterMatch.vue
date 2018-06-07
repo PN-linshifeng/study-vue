@@ -13,18 +13,22 @@
 					参数sort：{{$route.params.sort||"没有此参数"}}
 				</p>
 				<p>HTML代码</p>
-				<p class="notes-code">
-	<pre>
-	&lt;router-link to=&quot;/router-match/lisa&quot;&gt;lisa&lt;/router-link&gt;
-	&lt;router-link to=&quot;/router-match/xiaoming&quot; exact&gt;xiaoming&lt;/router-link&gt;
-	&lt;router-link to=&quot;/router-match/lili/top&quot;&gt;lili&amp;top&lt;/router-link&gt;
-	</pre>
+				<p >
+<pre name="code" class="html">
+&lt;router-link to=&quot;/router-match/lisa&quot;&gt;lisa&lt;/router-link&gt;
+&lt;router-link to=&quot;/router-match/xiaoming&quot; exact&gt;xiaoming&lt;/router-link&gt;
+&lt;router-link to=&quot;/router-match/lili/top&quot;&gt;lili&amp;top&lt;/router-link&gt;
+</pre>
 				</p>
-				<p>js代码：</p>
-				<p class="notes-code">{
-					path: '/router-match/:id?/:sort?',
-				    name: 'routerMatch',
-				    component: RouterMatch}
+				<p>路由代码：</p>
+				<p>
+				<pre class="js" name="code">
+{
+	path: &#x27;/router-match/:id?/:sort?&#x27;,
+	name: &#x27;routerMatch&#x27;,
+	component: RouterMatch
+}
+				</pre>
 				</p>
 			</div>
 		</div>
@@ -41,29 +45,31 @@
 			</p>
 			<p>复用组件时，生命周期钩子不会再被调用,想对路由参数的变化作出响应的话，你可以简单地 <span class="strong">watch (监测变化) $route</span> 对象或者使用<span class="strong">beforeRouteUpdate</span></p>
 			<p>HTML代码：</p>
-			<p class="notes-code">
-<pre>
+			<p >
+<pre name="code" class="html">
 &lt;router-link to=&quot;/router-match/lisa&quot;&gt;lisa&lt;/router-link&gt;
 &lt;router-link to=&quot;/router-match/xiaoming&quot; exact&gt;xiaoming&lt;/router-link&gt;
 </pre>
 			</p>
 			<p>JS代码：</p>
-			<p class="notes-code">
-<pre>
+			<p>
+<pre  name="code" class="js">
 {
-	template:'RouterMatch',
+	template:&#x27;RouterMatch&#x27;,
 	data: function(){
 		return {
-			sex:'男'
+			sex:&#x27;男&#x27;
 		}
 	},
 	watch:{
-		'$route'(to,from){
-			this.sex=this.sex=="男"?"女":"男";
+		&#x27;$route&#x27;(to,from){
+			this.sex=this.sex==&quot;男&quot;?&quot;女&quot;:&quot;男&quot;;
 		}
 	}
 }
 </pre>
+
+
 			</p>
 		</div>
 		<div class="margin-block">
@@ -84,12 +90,16 @@
 				sex:'男'
 			}
 		},
+		mounted:function(){
+			DlHighlight.HELPERS.highlightByName("code", "pre")
+		},
 		// beforeRouteUpdate (to, from, next) {
 		//     this.sex=this.sex=="男"?"女":"男";
 		// },
 		watch:{
 			'$route'(to,from){
 				this.sex=this.sex=="男"?"女":"男";
+				console.log(to,from)
 			}
 		}
 	}

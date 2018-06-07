@@ -50,7 +50,7 @@ html,body{
   overflow:auto;
 }
 .main-wrap{
-  margin: 0px 10px;
+  margin: 0px 50px;
 }
 
 
