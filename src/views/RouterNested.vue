@@ -1,10 +1,10 @@
 <template>
-	<div>
+	<div v-highlight>
 	<div class="margin-block">
 		<h1>嵌套路由</h1>
 		<p>一个被渲染的组件可以包含自己的嵌套路由&lt;router-view&gt;,有点像iframe</p>
 		<p>点击显示嵌套子路由：<router-link to="/router-nested/child">子路由</router-link></p>
-		<router-view></router-view>
+		<router-view class="router-view nested"></router-view>
 	</div>
 	<div class="margin-block">
 		<p>vue模板：</p>
@@ -34,12 +34,4 @@
 	</div>
 	</div>
 </template>
-<script>
-	import DlHighlight from "@/assets/hl/hl-all.js";
-	export default{
-		name:"RouterNested",
-		mounted: function() {
-			DlHighlight.HELPERS.highlightByName("code", "pre")
-		}
-	}
-</script>
+

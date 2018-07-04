@@ -1,7 +1,8 @@
 <template>
-	<div>
+	<div v-highlight>
 		<div class="margin-block">
 			<h1>动态路由匹配</h1>
+			<keep-alive ><div style=" height:100px; overflow:auto"><div style=" height:500px;"></div></div></keep-alive>
 			<div class="match">
 				<p>
 					点击链接查看参数：
@@ -39,6 +40,8 @@
 				获取用户名的性别：
 				<router-link to="/router-match/lisa">lisa</router-link>
 				<router-link to="/router-match/xiaoming" exact>xiaoming</router-link>
+				<router-link to="/router-match/xiaoming?ss=545" exact>xiaoming</router-link>
+				<router-link to="/router-match/xiaoming?ss=fasdfaf" exact>xiaoming</router-link>
 			</p>
 			<p class="notes">
 				{{$route.params.id?$route.params.id+"的性别是："+sex:"点击链接"}}
@@ -90,17 +93,14 @@
 				sex:'男'
 			}
 		},
-		mounted:function(){
-			DlHighlight.HELPERS.highlightByName("code", "pre")
-		},
-		// beforeRouteUpdate (to, from, next) {
-		//     this.sex=this.sex=="男"?"女":"男";
-		// },
-		watch:{
-			'$route'(to,from){
-				this.sex=this.sex=="男"?"女":"男";
-				console.log(to,from)
-			}
+		beforeRouteUpdate:function(to, from, next){
+			this.sex=this.sex=="男"?"女":"男";
+			next()
 		}
+		// watch:{
+		// 	'$route'(){
+		// 		this.sex=this.sex=="男"?"女":"男";
+		// 	}
+		// }
 	}
 </script>

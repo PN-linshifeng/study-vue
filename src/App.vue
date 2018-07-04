@@ -5,7 +5,10 @@
       <Aside></Aside>
     </div>
     <div class="main-wrap">
-      <router-view/>
+      <transition :name="view">
+          <router-view class="view-page"></router-view>
+      </transition>
+      
     </div>
   </div>
 </template>
@@ -17,6 +20,16 @@ export default {
   components: {
     Header,
     Aside
+  },
+  data:function(){
+      return{
+        view:localStorage.getItem("routerTransiton")
+      }
+    },
+  watch:{
+    '$route'(){
+      this.view=localStorage.getItem("routerTransiton");
+    }
   }
 }
 </script>
@@ -24,6 +37,8 @@ export default {
 html,body{
   margin: 0px;
   padding: 0px;
+  line-height: 1.4;
+  height:100%;
 }
 .has-topber{
   padding-top:80px;
@@ -35,29 +50,29 @@ html,body{
   }
 }
 .has-aside{
-  padding-left: 200px;
-
+  padding-left: 250px;
 }
 
 .aside-wrap{
   position: fixed;
   left:0px;
   bottom: 0px;
+  z-index: 9;
   border-right: 1px solid #e2e2e2;
-  width:200px;
+  width:250px;
   margin-right:20px;
   background:#f0f0f0;
   overflow:auto;
 }
 .main-wrap{
   margin: 0px 50px;
+  height:100%;
+  position: relative;
 }
 
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  height:100%;
 }
 #nav {
   padding: 30px;
@@ -68,5 +83,19 @@ html,body{
       color: #42b983;
     }
   }
+}
+
+
+.view-left-enter,.view-right-leave-to{;
+  transform:translate(100%);
+}
+.view-left-leave-to,.view-right-enter{
+  transform:translate(-100%);
+}
+.view-left-enter-active,.view-left-leave-active,.view-right-enter-active,.view-right-leave-active{
+  transition: all 0.3s;
+  position: absolute;
+  width: 100%;
+  top: 0;
 }
 </style>
