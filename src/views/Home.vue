@@ -3,6 +3,7 @@
   <!-- <div class="bolang"></div> -->
     <div class="css"></div>
     <img src="../assets/logo.png">
+    <div class="qr"></div>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     
   </div>

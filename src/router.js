@@ -26,10 +26,13 @@ import RouterTransitionPage1 from "./views/RouterTransitionPage1";
 import RouterTransitionPage2 from "./views/RouterTransitionPage2";
 // import RouterLazy from "./views/RouterLazy";
 // const RouterLazy = (resolve) => require(['./views/RouterLazy'], resolve)
-  // const RouterLazy = () => Promise.resolve(
-  //     import ("./views/RouterLazy"))
-  const RouterLazy = () =>
-    import ( /* webpackChunkName: "group-lazy" */ "./views/RouterLazy");
+// const RouterLazy = () => Promise.resolve(
+//     import ("./views/RouterLazy"))
+const RouterLazy = () =>
+  import ( /* webpackChunkName: "group-lazy" */ "./views/RouterLazy");
+
+
+
 // const Foo = Vue.component('anchored-heading', {
 //   render: function(createElement) {
 //     return createElement(
@@ -238,8 +241,11 @@ var routers = [{
 }]
 
 
+//基础
 
+console.log([...basicsRoutes])
 var router = new Router({
+  mode: 'history',
   routes: [{
     path: '/',
     name: 'home',
@@ -252,7 +258,7 @@ var router = new Router({
     path: '/about',
     name: 'about',
     component: About
-  }, ...routers],
+  }, ...routers, ...basicsRoutes],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
