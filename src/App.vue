@@ -38,7 +38,7 @@ body {
   margin: 0px;
   padding: 0px;
   line-height: 1.4;
-  height: 100%;
+  // height: 100%;
 }
 .has-topber {
   padding-top: 80px;
@@ -66,12 +66,12 @@ body {
 }
 .main-wrap {
   margin: 0px 50px;
-  height: 100%;
+  // height: 100%;
   position: relative;
 }
 
 #app {
-  height: 100%;
+  // height: 100%;
 }
 #nav {
   padding: 30px;

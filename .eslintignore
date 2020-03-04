@@ -1,6 +1,5 @@
 
-src/assets/highlight
-src/assets/hl
+src/assets
 node_modules
 dist
-
+git

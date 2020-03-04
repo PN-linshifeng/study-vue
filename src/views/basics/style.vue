@@ -40,12 +40,38 @@
         }
       </pre>
     </div>
+    <div class="margin-block">
+      <h1>style内联样式绑定</h1>
+      <p>可以使用对象或者数组绑定</p>
+      <div>
+        <div>
+          <p v-bind:style="{fontSize:'18px',color:color}">对象绑定</p>
+          <p v-bind:style="[styleArr]">数组绑定</p>
+        </div>
+      </div>
+      <pre name="code" class="html" type="html">
+          &lt;p v-bind:style=&quot;{fontSize:&#x27;18px&#x27;,color:color}&quot;&gt;对象绑定&lt;/p&gt;
+          渲染成：style="font-size:18px;color:red"
+
+          &lt;p v-bind:style=&quot;[styleArr]&quot;&gt;数组绑定&lt;/p&gt;
+          渲染成：style="color:ffaa00"
+      </pre>
+      <pre name="code" class="js" type="js">
+          data:function(){
+            return{
+              color: "red",
+              styleArr: { color: "#ffaa00" }
+            }
+          }
+      </pre>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data: function() {
     return {
+      // class 测试数据
       active: true,
       error: false,
       objClass: {
@@ -53,7 +79,11 @@ export default {
         error: false
       },
       activeClass: "active",
-      errorClass: "input-errer"
+      errorClass: "input-errer",
+
+      // style 测试数据
+      color: "red",
+      styleArr: { color: "#ffaa00" }
     };
   }
 };

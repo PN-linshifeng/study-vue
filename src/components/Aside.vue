@@ -68,6 +68,62 @@
           <li class="parent">
             <router-link to="/basics/style">style-class</router-link>
           </li>
+          <li class="parent">
+            <router-link to="/basics/if-show">条件渲染</router-link>
+            <ul class="child">
+              <li>
+                <a href="#if">v-if</a>
+              </li>
+              <li>
+                <a href="#show">v-show</a>
+              </li>
+              <li>
+                <a href="/basics/if-show#if-show">比较</a>
+              </li>
+            </ul>
+          </li>
+          <li class="parent">
+            <router-link to="/basics/v-for">列表渲染</router-link>
+            <ul class="child">
+              <li>
+                <a href="#v-for">v-for</a>
+              </li>
+              <li>
+                <a href="#数组和对象更新注意">数组和对象更新注意</a>
+              </li>
+              <li>
+                <a href="#v-for和v-if">v-for和v-if</a>
+              </li>
+            </ul>
+          </li>
+          <li class="parent">
+            <router-link to="/basics/event">事件处理</router-link>
+            <ul class="child">
+              <li>
+                <a href="#event">事件绑定或者监听</a>
+              </li>
+              <li>
+                <a href="#修饰符">修饰符</a>
+              </li>
+              <li>
+                <a href="#按键修饰符">按键修饰符</a>
+              </li>
+            </ul>
+          </li>
+          <li class="parent">
+            <router-link to="/basics/form">表单</router-link>
+            <ul class="child">
+              <li>
+                <a href="#event">form</a>
+              </li>
+              <li>
+                <a href="#修饰符">修饰符</a>
+              </li>
+              <li>
+                <a href="#按键修饰符">按键修饰符</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </li>
     </ul>
