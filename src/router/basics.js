@@ -7,6 +7,8 @@ import ifShow from '@/views/basics/ifShow';
 import vFor from '@/views/basics/vFor';
 import event from '@/views/basics/event';
 import form from '@/views/basics/form';
+import component from '@/views/basics/component';
+import props from '@/views/basics/props';
 
 let basicsRoutes = [
   {
@@ -52,6 +54,16 @@ let basicsRoutes = [
         path: 'form',
         name: 'form',
         component: form,
+      },
+      {
+        path: 'component',
+        name: 'component',
+        component: component,
+      },
+      {
+        path: 'props',
+        name: 'props',
+        component: props,
       },
     ],
   },
