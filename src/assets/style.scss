@@ -1,129 +1,131 @@
 html {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 body {
-	line-height: 1.8;
-	font-family: "microsoft yahei", Arial;
+  line-height: 1.8;
+  font-family: 'microsoft yahei', Arial;
 }
 .notes,
 .notes-code {
-	padding: 10px;
-	background: #f5f5f5;
-	border-radius: 5px;
-	&.components {
-		&:before {
-			display: block;
-			content: "普通组件";
-			margin-bottom: 10px;
-			color: #999;
-			font-size: 14px;
-		}
-	}
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 5px;
+  &.components {
+    &:before {
+      display: block;
+      content: '普通组件';
+      margin-bottom: 10px;
+      color: #999;
+      font-size: 14px;
+    }
+  }
 }
 .notes-code {
-	background: #2d2d2d;
-	color: #fff;
+  background: #2d2d2d;
+  color: #fff;
 }
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 pre {
-	padding: 0px;
-	margin: 0px;
-	font-family: "microsoft yahei", Arial !important;
-	font-size: 14px;
+  padding: 0px;
+  margin: 0px;
+  font-family: 'microsoft yahei', Arial !important;
+  font-size: 14px;
 }
 blockquote {
-	margin: 10px 0px 10px 40px;
-	color: #666;
+  margin: 32px 0;
+  padding: 16px;
+  background: #fcfcfc;
+  color: #666;
 }
 code {
-	font-family: "microsoft yahei", Arial;
+  font-family: 'microsoft yahei', Arial;
 }
 a {
-	margin: 0px 10px;
-	color: #41b883;
-	text-decoration: none;
+  margin: 0px 10px;
+  color: #41b883;
+  text-decoration: none;
 }
 
 a.router-link-active {
-	color: red;
+  color: red;
 }
 .margin-block {
-	margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 h3,
 h2 {
-	padding: 10px 0;
-	border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
 }
 ul {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .strong {
-	background: #999;
-	color: #fff;
-	padding: 2px 10px;
-	border-radius: 5px;
-	font-weight: 600;
-	margin: 0px 5px;
+  background: #999;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  margin: 0px 5px;
 }
 .btn {
-	display: inline-block;
-	min-width: 70px;
-	line-height: 30px;
-	background: #41b883;
-	color: #fff;
-	border: none;
-	border-radius: 30px;
-	margin: 0px 5px;
-	outline: none;
-	padding: 0px 15px;
-	text-align: center;
-	&.router-link-active {
-		background: #35495e;
-		color: #fff;
-	}
+  display: inline-block;
+  min-width: 70px;
+  line-height: 30px;
+  background: #41b883;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  margin: 0px 5px;
+  outline: none;
+  padding: 0px 15px;
+  text-align: center;
+  &.router-link-active {
+    background: #35495e;
+    color: #fff;
+  }
 }
 
 .router-view {
-	&:before {
-		display: block;
-		content: "嵌套视图";
-	}
+  &:before {
+    display: block;
+    content: '嵌套视图';
+  }
 }
 .DlHighlight {
-	margin-left: 0px;
-	margin-bottom: 25px;
-	&[type="router"]:before {
-		content: "// 路由JS";
-		display: block;
-		color: #999;
-		margin-bottom: 10px;
-	}
-	&[type="component"]:before {
-		content: "// 普通组件";
-		display: block;
-		color: #999;
-		margin-bottom: 10px;
-	}
-	&[type="view"]:before {
-		content: "// 视图组件";
-		display: block;
-		color: #999;
-		margin-bottom: 10px;
-	}
-	&[type="js"]:before {
-		content: "// js代码";
-		display: block;
-		color: #999;
-		margin-bottom: 10px;
-	}
-	&[type="html"]:before {
-		content: "// html代码";
-		display: block;
-		color: #999;
-		margin-bottom: 10px;
-	}
+  margin-left: 0px;
+  margin-bottom: 25px;
+  &[type='router']:before {
+    content: '// 路由JS';
+    display: block;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  &[type='component']:before {
+    content: '// 普通组件';
+    display: block;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  &[type='view']:before {
+    content: '// 视图组件';
+    display: block;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  &[type='js']:before {
+    content: '// js代码';
+    display: block;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  &[type='html']:before {
+    content: '// html代码';
+    display: block;
+    color: #999;
+    margin-bottom: 10px;
+  }
 }

@@ -124,6 +124,34 @@
               </li>
             </ul>
           </li>
+          <li class="parent">
+            <router-link to="/basics/component">组件</router-link>
+            <ul class="child">
+              <li>
+                <a href="#基本组件">基本组件</a>
+              </li>
+              <li>
+                <a href="#修饰符">修饰符</a>
+              </li>
+              <li>
+                <a href="#按键修饰符">按键修饰符</a>
+              </li>
+            </ul>
+          </li>
+          <li class="parent">
+            <router-link to="/basics/props">props</router-link>
+          </li>
+        </ul>
+      </li>
+      <li v-on:click="switchs" class="parent">
+        <router-link to="/vuex/start">vuex</router-link>
+        <ul class="child">
+          <li>
+            <router-link to="/vuex/start">state</router-link>
+          </li>
+          <li>
+            <router-link to="/vuex/getter">getter/mutation/action/module</router-link>
+          </li>
         </ul>
       </li>
     </ul>
@@ -134,37 +162,37 @@ export default {
   methods: {
     switchs: function() {
       // console.log(event.target)
-    }
+    },
   },
   mounted: function() {
     let path = this.$route.path;
     let link = document.querySelector(".aside a[href$='" + path + "']");
     if (link) {
-      while (link.tagName != "BODY") {
-        link.classList.add("open");
+      while (link.tagName != 'BODY') {
+        link.classList.add('open');
         link = link.parentNode;
       }
     }
-    var aside = document.querySelectorAll(".aside li");
+    var aside = document.querySelectorAll('.aside li');
     aside.forEach(function(item) {
       item.addEventListener(
-        "click",
+        'click',
         function(event) {
           event.stopPropagation();
           aside.forEach(item => {
-            item.classList.remove("open");
+            item.classList.remove('open');
           });
 
           let than = this;
-          while (than.tagName != "BODY") {
-            than.classList.add("open");
+          while (than.tagName != 'BODY') {
+            than.classList.add('open');
             than = than.parentNode;
           }
         },
         false
       );
     });
-  }
+  },
 };
 </script>
 <style lang="scss">
@@ -211,7 +239,7 @@ export default {
         top: 0;
         bottom: 0px;
         margin: auto 0;
-        content: "";
+        content: '';
         display: block;
         width: 10px;
         height: 10px;
