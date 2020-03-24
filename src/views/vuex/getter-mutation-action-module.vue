@@ -117,10 +117,8 @@
 import { mapState } from 'vuex';
 import './s';
 
-let d = 999;
-
 export default {
-  data: function() {
+  data() {
     return {
       value: '',
       style: {
@@ -130,7 +128,7 @@ export default {
     };
   },
   computed: {
-    doneTodoList: function() {
+    doneTodoList() {
       return this.$store.getters['todo/doneTodoList'];
     },
     ...mapState({
@@ -139,14 +137,14 @@ export default {
     }),
   },
   methods: {
-    handleDone: function(e, index) {
+    handleDone(e, index) {
       this.$store.dispatch('todo/done', { index });
     },
-    submitTodo: function() {
+    submitTodo() {
       if (this.value.length === 0) return;
       this.$store.dispatch('todo/addTodo', {
         title: this.value,
-        callback: function(response) {
+        callback(response) {
           console.log(response);
         },
       });

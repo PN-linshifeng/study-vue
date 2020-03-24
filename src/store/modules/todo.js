@@ -11,10 +11,10 @@ export default {
     ],
   },
   mutations: {
-    increment: function(state) {
+    increment(state) {
       state.count++;
     },
-    less: state => {
+    less(state) {
       state.count--;
     },
     doneLoading(state, payload) {
@@ -43,7 +43,7 @@ export default {
     },
   },
   getters: {
-    doneTodoList: function(state) {
+    doneTodoList(state) {
       return state.todoList.filter(k => k.done);
     },
   },
@@ -57,6 +57,7 @@ export default {
     increment(context) {
       context.commit('mutations');
     },
+
     less({ commit }) {
       commit('less');
     },

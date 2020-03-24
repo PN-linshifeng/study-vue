@@ -109,7 +109,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  data:function(){
+  data(){
     return {defaultCount:100}
   },
   /** 第一种调用store */
@@ -119,17 +119,17 @@ export default {
   //   },
   // },
 
-  /** 第二种调用store mapState({})*/
+  /** 第二种调用store mapState({}) */
   computed: mapState({
     // 获取函数获取store更简洁，普通也可以
-    count: state => state.count,
+    count: state => state.todo.count,
 
     // 设置计算属性computed count 的别名
     countAlias: 'count',
 
     // 内部有this 使用普通函数
     add(state){
-      return this.defaultCount+state.count
+      return this.defaultCount+state.todo.count
     }
   }),
 
@@ -137,11 +137,11 @@ export default {
   // computed:mapState(['count']),
 
   methods: {
-    increment: function() {
-      this.$store.commit('increment');
+    increment() {
+      this.$store.commit('todo/increment');
     },
-    less: function() {
-      this.$store.commit('less');
+    less() {
+      this.$store.commit('todo/less');
     },
   },
 };

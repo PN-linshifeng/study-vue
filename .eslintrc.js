@@ -1,17 +1,19 @@
 module.exports = {
-  root: true,
   env: {
-    node: true,
+    browser: true,
+    es6: true,
   },
+  extends: ['plugin:vue/essential', 'airbnb-base', 'prettier'],
   globals: {
-    DlHighlight: true,
-  },
-  extends: ['plugin:vue/essential', 'eslint:recommended'],
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
-    parser: 'babel-eslint',
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  plugins: ['vue'],
+  rules: {
+    'no-param-reassign': { props: false },
   },
 };

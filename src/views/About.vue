@@ -4,10 +4,11 @@
   </div>
 </template>
 <script>
-alert(9);
 export default {
-  data: {
-    a: 1,
+  data() {
+    return {
+      a: 1,
+    };
   },
 };
 </script>
