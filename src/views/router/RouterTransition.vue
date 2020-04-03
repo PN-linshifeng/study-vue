@@ -128,12 +128,12 @@ router.beforeEach((to, from, next) =&gt; {
 </template>
 <script>
 	export default{
-		data:function(){
+		data(){
 			return{
 				view:localStorage.getItem("routerTransiton")
 			}
 		},
-		beforeRouteUpdate(to,from,next){//在当前视图写路由前置守卫
+		beforeRouteUpdate(to,from,next){// 在当前视图写路由前置守卫
 			this.view=localStorage.getItem("routerTransiton");
 			next()
 		}

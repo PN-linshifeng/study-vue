@@ -124,7 +124,7 @@ export default {
     'Conponent-input-text': ConponentInputText,
     'Props-attr-name': PropsAttrName,
   },
-  data: function() {
+  data() {
     return {
       // 新闻参数
       newsTime: '2020-05-05',
@@ -135,7 +135,7 @@ export default {
     };
   },
   methods: {
-    setName: function(name) {
+    setName(name) {
       this.name = name;
     },
   },

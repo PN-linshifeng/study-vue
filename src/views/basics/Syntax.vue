@@ -62,58 +62,59 @@
   </div>
 </template>
 <script>
-import $ from "jquery";
-let name = ["插值", "小米", "大红", "白板", "大河"];
-var sex = ["男", "女", "公", "母"];
+import $ from 'jquery';
+
+const name = ['插值', '小米', '大红', '白板', '大河'];
+const sex = ['男', '女', '公', '母'];
 const htmlCode = "<div style='color:#f30f30'>我的html</div>";
 export default {
-  data: function() {
+  data() {
     return {
-      name: "插值",
-      sex: "男",
-      html: "{{name}}",
+      name: '插值',
+      sex: '男',
+      html: '{{name}}',
       htmlCode,
       hidden: true,
-      list: name
+      list: name,
     };
   },
   methods: {
     rename() {
-      var index = Math.floor(Math.random() * (name.length - 1));
+      const index = Math.floor(Math.random() * (name.length - 1));
       this.name = name[index];
     },
     resex() {
-      var index = Math.floor(Math.random() * (sex.length - 1));
+      const index = Math.floor(Math.random() * (sex.length - 1));
       this.sex = sex[index];
-      console.log(this.sex);
     },
     swift() {
       this.hidden = !this.hidden;
-    }
+    },
   },
-  mounted: function() {
-    var number = 0;
-    setTimeout(next, 1000);
+  mounted() {
+    let number = 0;
+
     function next() {
       number = number + 1 > 9 ? 0 : number + 1;
-      var html = `<span class="last top">${number}</span>
+      const html = `<span class="last top">${number}</span>
 				<span class="last bottom">${number}</span>`;
-      $(".times").append(html);
-      $(".times span")
+      $('.times').append(html);
+      $('.times span')
         .eq(0)
-        .addClass("pve");
-      $(".times span")
+        .addClass('pve');
+      $('.times span')
         .eq(1)
-        .addClass("pve");
-      $(".times").addClass("next");
+        .addClass('pve');
+      $('.times').addClass('next');
       setTimeout(function() {
-        $(".times .pve").remove();
-        $(".times span").removeClass("last");
-        $(".times").removeClass("next");
+        $('.times .pve').remove();
+        $('.times span').removeClass('last');
+        $('.times').removeClass('next');
       }, 450);
       // setTimeout(next, 600);
     }
-  }
+    setTimeout(next, 1000);
+  },
 };
 </script>
 <style lang="scss">

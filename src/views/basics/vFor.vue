@@ -45,7 +45,7 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data() {
     return {
       arrString:
         '<li v-for="(item,index) in flower" :key="index">{{item}}</li>',

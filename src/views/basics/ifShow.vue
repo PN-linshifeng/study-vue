@@ -84,13 +84,13 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data() {
     return {
       vip: true
     };
   },
   methods: {
-    handleSwich: function() {
+    handleSwich() {
       this.vip = !this.vip;
     }
   }

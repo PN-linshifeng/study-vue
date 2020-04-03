@@ -115,7 +115,6 @@
 </style>
 <script>
 import { mapState } from 'vuex';
-import './s';
 
 export default {
   data() {
@@ -145,6 +144,7 @@ export default {
       this.$store.dispatch('todo/addTodo', {
         title: this.value,
         callback(response) {
+          // eslint-disable-next-line no-console
           console.log(response);
         },
       });

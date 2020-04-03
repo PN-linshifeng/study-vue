@@ -24,7 +24,7 @@ import componentButton from './component-button';
 
 // const at = { template: '<span>ssss</span>' };
 export default {
-  data: function() {
+  data() {
     return {
       namea: 'S',
       say: '',
@@ -33,11 +33,13 @@ export default {
   },
   components: { componentButton },
   methods: {
-    onLog: function(count) {
+    onLog(count) {
+      // eslint-disable-next-line no-console
       console.log(count);
     },
-    onName: function(namea) {
+    onName(namea) {
       this.namea = namea;
+      // eslint-disable-next-line no-console
       console.log(this.namea);
     },
   },

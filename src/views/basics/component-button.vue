@@ -12,15 +12,15 @@
 <script>
 export default {
   props: ['title', 'content', 'onLog', 'names', 'say'],
-  data: function() {
+  data() {
     return {
       count: 0,
     };
   },
   methods: {
-    handleAdd: function() {
+    handleAdd() {
       this.say = '双向绑定';
-      this.count++;
+      this.count += 1;
       this.$emit('onLog', this.count);
     },
   },

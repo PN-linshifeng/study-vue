@@ -110,7 +110,7 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data() {
     return {
       input: '',
       checkbox: false,

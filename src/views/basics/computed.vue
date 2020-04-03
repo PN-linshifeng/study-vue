@@ -42,40 +42,41 @@
   </div>
 </template>
 <script>
-import _ from "lodash";
+import _ from 'lodash';
+
 export default {
-  data: function() {
+  data() {
     return {
-      text: "123456789",
+      text: '123456789',
       /** 搜索关键字 */
-      seach: "",
+      seach: '',
       /** 搜索结果 */
-      searchAnser: ""
+      searchAnser: '',
     };
   },
   methods: {
-    search: function() {
-      this.searchAnser = "正在搜索中....";
+    search() {
+      this.searchAnser = '正在搜索中....';
       setTimeout(() => {
-        this.searchAnser = "lalalalalala" + this.seach;
+        this.searchAnser = `lalalalalala${this.seach}`;
       }, 1000);
-    }
+    },
   },
   computed: {
-    reverseText: function() {
+    reverseText() {
       return this.text
-        .split("")
+        .split('')
         .reverse()
-        .join("");
-    }
+        .join('');
+    },
   },
-  created: function() {
+  created() {
     this.onSearch = _.debounce(this.search, 500);
   },
   watch: {
-    seach: function() {
+    seach() {
       this.onSearch();
-    }
-  }
+    },
+  },
 };
 </script>

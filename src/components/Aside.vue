@@ -1,156 +1,26 @@
 <template>
   <div class="aside">
     <ul>
-      <li v-on:click="switchs" class="parent">
-        <router-link to="/" exact>路由</router-link>
-        <div class="child">
-          <ul>
-            <li>
-              <router-link to="/router-match">动态路由匹配</router-link>
-            </li>
-            <li>
-              <router-link to="/router-nested">嵌套路由</router-link>
-            </li>
-            <li>
-              <router-link to="/router-nav">编程式的导航</router-link>
-            </li>
-            <li>
-              <router-link to="/router-name">命名路由</router-link>
-            </li>
-
-            <li>
-              <router-link to="/router-view">命名视图</router-link>
-            </li>
-            <li>
-              <router-link to="/router-redirect">重定向和别名</router-link>
-            </li>
-            <li>
-              <router-link to="/router-props">路由组件传参</router-link>
-            </li>
-            <li>
-              <router-link to="/router-history">HTML5 History 模式</router-link>
-            </li>
-            <li>
-              <router-link to="/router-guards">导航守卫</router-link>
-            </li>
-            <li>
-              <router-link to="/router-meta">路由元信息</router-link>
-            </li>
-            <li>
-              <router-link to="/router-transition">过渡动态</router-link>
-            </li>
-            <li>
-              <router-link to="/router-lazy">路由懒加载</router-link>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li v-on:click="switchs" class="parent">
-        <router-link to="/basics/instance">基础</router-link>
-        <ul class="child">
-          <li>
-            <router-link to="/basics/instance">Vue 实例</router-link>
-          </li>
-          <li class="parent">
-            <router-link to="/basics/syntax">语法模板</router-link>
-            <ul class="child">
-              <li>
-                <router-link to="/basics/syntax#插值">插值</router-link>
-              </li>
-              <li>
-                <router-link to="/basics/syntax#原生HTML">原生HTML</router-link>
+      <li
+        v-for="k in nav"
+        :key="k.path"
+        :class="{open:isOpen(k.path)}"
+        v-on:click="hanldSwith($event,k.path)"
+      >
+        <router-link :to="k.path">{{k.name}}</router-link>
+        <ul v-if="k.children&&k.children.length" :class="{open:isOpen(k.path)}">
+          <li
+            v-for="kk in k.children"
+            :key="kk.path"
+            :class="{open:isOpen(kk.path)}"
+            v-on:click="hanldSwith($event,kk.path)"
+          >
+            <router-link :to="kk.path">{{kk.name}}</router-link>
+            <ul v-if="kk.children&&kk.children.length" :class="{open:isOpen(kk.path)}">
+              <li v-for="kkk in kk.children" :key="kkk.path">
+                <router-link :to="kkk.path" @click.native.stop>{{kkk.name}}</router-link>
               </li>
             </ul>
-          </li>
-          <li class="parent">
-            <router-link to="/basics/computed">计算属性</router-link>
-          </li>
-          <li class="parent">
-            <router-link to="/basics/style">style-class</router-link>
-          </li>
-          <li class="parent">
-            <router-link to="/basics/if-show">条件渲染</router-link>
-            <ul class="child">
-              <li>
-                <a href="#if">v-if</a>
-              </li>
-              <li>
-                <a href="#show">v-show</a>
-              </li>
-              <li>
-                <a href="/basics/if-show#if-show">比较</a>
-              </li>
-            </ul>
-          </li>
-          <li class="parent">
-            <router-link to="/basics/v-for">列表渲染</router-link>
-            <ul class="child">
-              <li>
-                <a href="#v-for">v-for</a>
-              </li>
-              <li>
-                <a href="#数组和对象更新注意">数组和对象更新注意</a>
-              </li>
-              <li>
-                <a href="#v-for和v-if">v-for和v-if</a>
-              </li>
-            </ul>
-          </li>
-          <li class="parent">
-            <router-link to="/basics/event">事件处理</router-link>
-            <ul class="child">
-              <li>
-                <a href="#event">事件绑定或者监听</a>
-              </li>
-              <li>
-                <a href="#修饰符">修饰符</a>
-              </li>
-              <li>
-                <a href="#按键修饰符">按键修饰符</a>
-              </li>
-            </ul>
-          </li>
-          <li class="parent">
-            <router-link to="/basics/form">表单</router-link>
-            <ul class="child">
-              <li>
-                <a href="#event">form</a>
-              </li>
-              <li>
-                <a href="#修饰符">修饰符</a>
-              </li>
-              <li>
-                <a href="#按键修饰符">按键修饰符</a>
-              </li>
-            </ul>
-          </li>
-          <li class="parent">
-            <router-link to="/basics/component">组件</router-link>
-            <ul class="child">
-              <li>
-                <a href="#基本组件">基本组件</a>
-              </li>
-              <li>
-                <a href="#修饰符">修饰符</a>
-              </li>
-              <li>
-                <a href="#按键修饰符">按键修饰符</a>
-              </li>
-            </ul>
-          </li>
-          <li class="parent">
-            <router-link to="/basics/props">props</router-link>
-          </li>
-        </ul>
-      </li>
-      <li v-on:click="switchs" class="parent">
-        <router-link to="/vuex/start">vuex</router-link>
-        <ul class="child">
-          <li>
-            <router-link to="/vuex/start">state</router-link>
-          </li>
-          <li>
-            <router-link to="/vuex/getter">getter/mutation/action/module</router-link>
           </li>
         </ul>
       </li>
@@ -158,41 +28,174 @@
   </div>
 </template>	
 <script>
-export default {
-  methods: {
-    switchs: function() {
-      // console.log(event.target)
-    },
+import User from '@/router/user';
+import basics from '@/router/basics';
+
+const routers = [
+  {
+    path: '/router-match',
+    name: '路由',
+    children: [
+      {
+        path: '/router-match',
+        name: '动态路由匹配',
+      },
+      {
+        path: '/router-nested',
+        name: '嵌套路由',
+      },
+      {
+        path: '/router-nav',
+        name: '编程式的导航',
+      },
+      {
+        path: '/router-name',
+        name: '命名路由',
+      },
+      {
+        path: '/router-view',
+        name: '命名视图',
+      },
+      {
+        path: '/router-redirect',
+        name: '重定向和别名',
+      },
+      {
+        path: '/router-props',
+        name: '路由组件传参',
+      },
+      {
+        path: '/router-history',
+        name: 'HTML5 History 模式',
+      },
+      {
+        path: '/router-guards',
+        name: '导航守卫',
+      },
+      {
+        path: '/router-met',
+        name: '路由元信息',
+      },
+      {
+        path: '/router-transition',
+        name: '过渡动态',
+      },
+      {
+        path: '/router-lazy',
+        name: '路由懒加载',
+      },
+    ],
   },
-  mounted: function() {
-    let path = this.$route.path;
-    let link = document.querySelector(".aside a[href$='" + path + "']");
-    if (link) {
-      while (link.tagName != 'BODY') {
-        link.classList.add('open');
-        link = link.parentNode;
+];
+
+// const user = [
+//   {
+//     path: '/user',
+//     name: '用户管理',
+//   },
+// ];
+/** 展开的父项
+ *  arr<array> 树形结构数组
+ *  id<string> 打开的链接
+ * return obj<{indexs:被展开的下标，keys：被展开的链接，done：是否有被展开}>
+ */
+// eslint-disable-next-line no-unused-vars
+function navSign(arr, id) {
+  const resp = {
+    indexs: [],
+    keys: [],
+    done: false,
+  };
+  if (!Array.isArray(arr)) return arr;
+  for (let i = 0; i < arr.length; i += 1) {
+    resp.indexs = [i];
+    resp.keys = [arr[i].path];
+    const { path } = arr[i];
+    if (path === id) {
+      resp.done = true;
+    }
+    if (arr[i].children && path !== id) {
+      const next = navSign(arr[i].children, id);
+      resp.indexs.push(next.indexs[0]);
+      resp.keys.push(next.keys[0]);
+      resp.done = next.done;
+    }
+    if (resp.done) {
+      break;
+    }
+  }
+  return resp;
+}
+/** 给树型标记展开状态
+ * arr<array> 树形数组
+ * return arr 被标记过的数组
+ */
+function treeSign(arr, sign) {
+  const newsArr = [...arr];
+  let isOpen = false;
+  for (let i = 0; i < newsArr.length; i += 1) {
+    const b = sign.indexOf(newsArr[i].path);
+    if (b >= 0) {
+      newsArr[i].isOpen = true;
+      isOpen = true;
+      break;
+    }
+    if (Array.isArray(newsArr[i].children) && newsArr[i].children.length > 0) {
+      const item = treeSign(newsArr[i].children, sign);
+      if (item.isOpen === true) {
+        newsArr[i].isOpen = true;
+        isOpen = true;
+        break;
       }
     }
-    var aside = document.querySelectorAll('.aside li');
-    aside.forEach(function(item) {
-      item.addEventListener(
-        'click',
-        function(event) {
-          event.stopPropagation();
-          aside.forEach(item => {
-            item.classList.remove('open');
-          });
+  }
+  return { newsArr, isOpen };
+}
 
-          let than = this;
-          while (than.tagName != 'BODY') {
-            than.classList.add('open');
-            than = than.parentNode;
-          }
-        },
-        false
-      );
-    });
+export default {
+  data() {
+    return {
+      a: 1,
+      keys: [],
+      nav: [...User, ...basics, ...routers],
+    };
   },
+  methods: {
+    /** 判断当前循环的路径是否符合打开条件 */
+    isOpen(path) {
+      const s = this.keys.find(k => path === k);
+      return s;
+    },
+    /** 找到展开的项 */
+    signKeys() {
+      const { path } = this.$route;
+      this.nav = JSON.parse(JSON.stringify(treeSign(this.nav, path))).newsArr;
+      const sign = navSign(this.nav, path);
+      if (sign.done) {
+        this.keys = sign.keys;
+      }
+    },
+    hanldSwith(event, path) {
+      event.preventDefault();
+      event.stopPropagation();
+      const i = this.keys.indexOf(path);
+      if (i >= 0) {
+        // this.keys = this.keys.filter(k => k !== path);
+        this.keys.splice(i);
+      } else {
+        this.keys.push(path);
+      }
+    },
+  },
+  created() {
+    this.signKeys();
+  },
+  watch: {
+    $route() {
+      // this.signKeys();
+    },
+  },
+  mounted() {},
 };
 </script>
 <style lang="scss">
@@ -202,6 +205,11 @@ export default {
 
     line-height: 40px;
     font-size: 16px;
+    ul {
+      display: none;
+      overflow: hidden;
+      animation: close 0.5s linear;
+    }
     .child {
       display: none;
       margin-left: -10px;
@@ -209,9 +217,15 @@ export default {
       background: #fff;
       overflow: hidden;
     }
+
     ul {
       font-size: 14px;
       line-height: 30px;
+      padding-left: 8px;
+      &.open {
+        display: block;
+        animation: open 0.5s linear;
+      }
     }
     li {
       list-style: none;
@@ -258,6 +272,14 @@ export default {
   }
   100% {
     max-height: 500px;
+  }
+}
+@keyframes close {
+  0% {
+    max-height: 500px;
+  }
+  100% {
+    max-height: 0px;
   }
 }
 </style>

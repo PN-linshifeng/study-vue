@@ -108,32 +108,36 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data() {
     return {
       num: 0,
       search: false,
       style: {
-        margin: "10px"
-      }
+        margin: '10px',
+      },
     };
   },
   methods: {
-    setNum: function(event) {
-      alert(this.num++);
+    setNum(event) {
+      // eslint-disable-next-line no-alert
+      alert((this.num += 1));
       if (event) {
+        // eslint-disable-next-line no-alert
         alert(event.target.tagName);
       }
     },
     say(str, event) {
+      // eslint-disable-next-line no-alert
       alert(str);
       if (event) {
+        // eslint-disable-next-line no-alert
         alert(event.target.tagName);
       }
     },
     submit() {
       this.search = true;
-      this.$refs["search"].blur();
-    }
-  }
+      this.$refs.search.blur();
+    },
+  },
 };
 </script>

@@ -69,7 +69,7 @@
 </template>
 <script>
 export default {
-  data: function() {
+  data() {
     return {
       // class 测试数据
       active: true,

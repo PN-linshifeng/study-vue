@@ -12,10 +12,10 @@ export default {
   },
   mutations: {
     increment(state) {
-      state.count++;
+      state.count += 1;
     },
     less(state) {
-      state.count--;
+      state.count -= 1;
     },
     doneLoading(state, payload) {
       const { index } = payload;
@@ -72,7 +72,6 @@ export default {
       const { callback } = payload;
       commit('loading', { type: 'addLoading' });
       const response = await add(payload);
-      console.log(response);
       commit('loading', { type: 'addLoading' });
       if (response && callback) {
         commit('addTodo', response);

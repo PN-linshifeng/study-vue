@@ -1,4 +1,8 @@
 import axios from 'axios';
+import { Message } from 'element-ui';
+import router from '@/router/index';
+
+// const router = new Router();
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -26,7 +30,7 @@ const request = payload => {
     method,
     data,
     params,
-    validateStatus: function() {
+    validateStatus() {
       return true;
       // console.log(status)
       // return status >= 200 && status < 300; // 默认的
@@ -47,12 +51,11 @@ const request = payload => {
     })
     .catch(err => {
       const { status, message } = err;
-
-      console.error(status + '：' + message);
-      // const history = require('./history.js').default;
-
+      Message.error(message);
       if (status === 401) {
-        // history.push('/user/login');
+        if (window.location.pathname.indexOf('/login') < 0) {
+          router.push('/login');
+        }
       }
       if (status === 404) {
         // history.push('/user/login');

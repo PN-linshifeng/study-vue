@@ -4,9 +4,8 @@ const delay = require('mocker-api/utils/delay'); // 延迟请求
 
 const { Random } = Mock;
 const todoList = [];
-init();
 
-/**初始化办事项数据 */
+/** 初始化办事项数据 */
 function init() {
   for (let i = 0; i < 5; i += 1) {
     todoList.push(
@@ -19,7 +18,7 @@ function init() {
   }
 }
 
-/**添加办事项 */
+/** 添加办事项 */
 function addData(req, res) {
   let data;
   let status = 200;
@@ -39,13 +38,14 @@ function addData(req, res) {
   return res.status(status).json(data);
 }
 
-/**处理办事项 */
+/** 处理办事项 */
 function done(req, res) {
   const { index } = req.body;
   todoList[index].done = !todoList[index].done;
   return res.json(todoList[index]);
 }
 
+init();
 module.exports = delay(
   {
     'GET /api/todo-querys': todoList,

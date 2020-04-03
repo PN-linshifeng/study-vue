@@ -12,7 +12,7 @@ export default new Vuex.Store({
     ],
   },
   mutations: {
-    increment: function(state) {
+    increment(state) {
       state.count++;
     },
     less: state => {
@@ -31,7 +31,7 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    doneTodoList: function(state) {
+    doneTodoList(state) {
       return state.todoList.filter(k => k.done);
     },
   },

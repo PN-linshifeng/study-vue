@@ -7,7 +7,9 @@
       <span></span>
     </div>
     <div class="logo">
-      <img src="../assets/logo.png" />
+      <router-link to="/">
+        <img src="../assets/logo.png" />
+      </router-link>
     </div>
     <div class="right">
       <ul>
@@ -55,7 +57,7 @@
         left: 0;
         width: 100%;
         padding-top: 100%;
-        content: "";
+        content: '';
         background: #76daff;
         border-radius: 42%;
         animation: rotate2 7s linear infinite;
@@ -67,7 +69,7 @@
         left: 55%;
         width: 100%;
         padding-top: 100%;
-        content: "";
+        content: '';
         background: #76daff;
         border-radius: 42%;
         animation: rotate2 7s linear infinite;

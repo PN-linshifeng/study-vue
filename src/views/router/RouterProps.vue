@@ -123,7 +123,8 @@
 	</div>
 </template>
 <script>
-	import myProps from "@/components/RouterProps.vue";
+	import myProps from "@/components/RouterProps";
+
 	export default{
 		name:"RouterProps",
 		data(){

@@ -1,5 +1,7 @@
 
 src/assets
+src/router/rou.js
 node_modules
 dist
 git
+mocker
