@@ -9,19 +9,22 @@
       >
         <router-link :to="k.path">{{k.name}}</router-link>
         <ul v-if="k.children&&k.children.length" :class="{open:isOpen(k.path)}">
-          <li
-            v-for="kk in k.children"
-            :key="kk.path"
-            :class="{open:isOpen(kk.path)}"
-            v-on:click="hanldSwith($event,kk.path)"
-          >
-            <router-link :to="kk.path">{{kk.name}}</router-link>
-            <ul v-if="kk.children&&kk.children.length" :class="{open:isOpen(kk.path)}">
-              <li v-for="kkk in kk.children" :key="kkk.path">
-                <router-link :to="kkk.path" @click.native.stop>{{kkk.name}}</router-link>
-              </li>
-            </ul>
-          </li>
+          <template>
+            <li
+              v-for="kk in k.children"
+              v-if="!kk.hidden"
+              :key="kk.path"
+              :class="{open:isOpen(kk.path)}"
+              v-on:click="hanldSwith($event,kk.path)"
+            >
+              <router-link :to="kk.path">{{kk.name}}</router-link>
+              <ul v-if="kk.children&&kk.children.length" :class="{open:isOpen(kk.path)}">
+                <li v-for="kkk in kk.children" :key="kkk.path">
+                  <router-link :to="kkk.path" @click.native.stop>{{kkk.name}}</router-link>
+                </li>
+              </ul>
+            </li>
+          </template>
         </ul>
       </li>
     </ul>
@@ -30,6 +33,7 @@
 <script>
 import User from '@/router/user';
 import basics from '@/router/basics';
+import order from '@/router/order';
 
 const routers = [
   {
@@ -87,6 +91,8 @@ const routers = [
     ],
   },
 ];
+
+export const route = [...order, ...User, ...basics, ...routers];
 
 // const user = [
 //   {
@@ -157,7 +163,7 @@ export default {
     return {
       a: 1,
       keys: [],
-      nav: [...User, ...basics, ...routers],
+      nav: [...route],
     };
   },
   methods: {

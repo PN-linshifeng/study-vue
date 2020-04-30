@@ -1,6 +1,7 @@
 const todo = require('./todo');
 const login = require('./login');
 const user = require('./user');
+const order = require('./order');
 
 module.exports = {
   // _proxy: {
@@ -16,4 +17,5 @@ module.exports = {
   ...todo,
   ...login,
   ...user,
+  ...order,
 };

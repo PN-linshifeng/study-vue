@@ -45,7 +45,7 @@ const request = payload => {
       // 异常处理
       const error = new Error(response.data);
       error.status = response.status;
-      error.message = codeMessage[response.status];
+      error.message = response.data.message || codeMessage[response.status];
       throw error;
       // return response;
     })

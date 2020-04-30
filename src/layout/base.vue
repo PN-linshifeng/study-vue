@@ -5,13 +5,52 @@
       <Aside keep></Aside>
     </div>
     <div class="main-wrap">
+      <el-breadcrumb separator="/" style=" padding:24px 0">
+        <el-breadcrumb-item to="/" exact>首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="item.path" v-for="(item) of mianbao" :key="item.path">{{item.name}}</el-breadcrumb-item>
+      </el-breadcrumb>
+
       <router-view class="view-page"></router-view>
     </div>
   </div>
 </template>
 <script>
 import Header from '@/components/header';
-import Aside from '@/components/Aside';
+import Aside, { route } from '@/components/Aside';
+
+function getParent(data, id) {
+  let arr = [];
+  function aa(items, resp = []) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const item of items) {
+      const pathArr = item.path.split('/');
+      const idArr = id.split('/');
+      pathArr.shift();
+      idArr.shift();
+
+      // if(pathArr.length===idArr.length){ }
+      let pathOk = false;
+      for (let i = 0; i < pathArr.length; i += 1) {
+        if (idArr[i] && pathArr[i].indexOf(':') >= 0) {
+          pathOk = true;
+          break;
+        }
+      }
+
+      if (item.path === id || pathOk) {
+        resp.push({ name: item.name, path: item.path });
+        arr = [...resp];
+
+        return;
+      }
+      if (item.children) {
+        aa(item.children, resp.concat({ name: item.name, path: item.path }));
+      }
+    }
+  }
+  aa(data);
+  return arr;
+}
 
 export default {
   name: 'App',
@@ -22,11 +61,22 @@ export default {
   data() {
     return {
       view: localStorage.getItem('routerTransiton'),
+      mianbao: [],
     };
+  },
+  created() {
+    this.setBreadcrumb();
+  },
+  methods: {
+    setBreadcrumb() {
+      const { path } = this.$route;
+      this.mianbao = getParent(route, path);
+    },
   },
   watch: {
     $route() {
       this.view = localStorage.getItem('routerTransiton');
+      this.setBreadcrumb();
     },
   },
 };

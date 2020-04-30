@@ -8,39 +8,46 @@ import BasicsRouter from './basics';
 import Vuex from './store';
 import routers from './rou';
 import User from './user';
+import Order from './order';
 
+export const route = [
+  {
+    path: '/',
+
+    name: '首页s',
+    redirect: { name: 'index' }, // 如果不做重定向控制台会警告
+    component: BaseLayout, // 公共页头页尾
+    children: [
+      {
+        path: '/',
+        name: 'index',
+        component: Home,
+      }, // 首页main部分
+      ...routers,
+      ...BasicsRouter,
+      ...Vuex,
+      ...User,
+      ...Order,
+    ],
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: About,
+  },
+];
 Vue.use(Router);
 
 // 路由url
 
 const router = new Router({
   mode: 'history',
-  routes: [
-    {
-      path: '/',
-
-      name: 'admin layout',
-      redirect: { name: 'index' },
-      component: BaseLayout, // 公共页头页尾
-      children: [
-        { path: '/', name: 'index', component: Home }, // 首页main部分
-        ...routers,
-        ...BasicsRouter,
-        ...Vuex,
-        ...User,
-      ],
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login,
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: About,
-    },
-  ],
+  routes: route,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
