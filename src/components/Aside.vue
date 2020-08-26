@@ -9,9 +9,8 @@
       >
         <router-link :to="k.path">{{k.name}}</router-link>
         <ul v-if="k.children&&k.children.length" :class="{open:isOpen(k.path)}">
-          <template>
+          <template v-for="kk in k.children">
             <li
-              v-for="kk in k.children"
               v-if="!kk.hidden"
               :key="kk.path"
               :class="{open:isOpen(kk.path)}"
@@ -31,68 +30,69 @@
   </div>
 </template>	
 <script>
-import User from '@/router/user';
-import basics from '@/router/basics';
-import order from '@/router/order';
+import User from "@/router/user";
+import basics from "@/router/basics";
+import order from "@/router/order";
+import jiqiao from "@/router/jiqiao";
 
 const routers = [
   {
-    path: '/router-match',
-    name: '路由',
+    path: "/router-match",
+    name: "路由",
     children: [
       {
-        path: '/router-match',
-        name: '动态路由匹配',
+        path: "/router-match",
+        name: "动态路由匹配",
       },
       {
-        path: '/router-nested',
-        name: '嵌套路由',
+        path: "/router-nested",
+        name: "嵌套路由",
       },
       {
-        path: '/router-nav',
-        name: '编程式的导航',
+        path: "/router-nav",
+        name: "编程式的导航",
       },
       {
-        path: '/router-name',
-        name: '命名路由',
+        path: "/router-name",
+        name: "命名路由",
       },
       {
-        path: '/router-view',
-        name: '命名视图',
+        path: "/router-view",
+        name: "命名视图",
       },
       {
-        path: '/router-redirect',
-        name: '重定向和别名',
+        path: "/router-redirect",
+        name: "重定向和别名",
       },
       {
-        path: '/router-props',
-        name: '路由组件传参',
+        path: "/router-props",
+        name: "路由组件传参",
       },
       {
-        path: '/router-history',
-        name: 'HTML5 History 模式',
+        path: "/router-history",
+        name: "HTML5 History 模式",
       },
       {
-        path: '/router-guards',
-        name: '导航守卫',
+        path: "/router-guards",
+        name: "导航守卫",
       },
       {
-        path: '/router-met',
-        name: '路由元信息',
+        path: "/router-met",
+        name: "路由元信息",
       },
       {
-        path: '/router-transition',
-        name: '过渡动态',
+        path: "/router-transition",
+        name: "过渡动态",
       },
       {
-        path: '/router-lazy',
-        name: '路由懒加载',
+        path: "/router-lazy",
+        name: "路由懒加载",
       },
     ],
   },
 ];
 
-export const route = [...order, ...User, ...basics, ...routers];
+export const route = [...order, ...User, ...basics, ...routers, ...jiqiao];
 
 // const user = [
 //   {
@@ -169,7 +169,7 @@ export default {
   methods: {
     /** 判断当前循环的路径是否符合打开条件 */
     isOpen(path) {
-      const s = this.keys.find(k => path === k);
+      const s = this.keys.find((k) => path === k);
       return s;
     },
     /** 找到展开的项 */
@@ -259,7 +259,7 @@ export default {
         top: 0;
         bottom: 0px;
         margin: auto 0;
-        content: '';
+        content: "";
         display: block;
         width: 10px;
         height: 10px;
