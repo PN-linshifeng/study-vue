@@ -57,7 +57,6 @@ export default {
     increment(context) {
       context.commit('mutations');
     },
-
     less({ commit }) {
       commit('less');
     },

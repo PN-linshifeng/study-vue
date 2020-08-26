@@ -106,8 +106,8 @@ const historyRouter = (function() {
     pushPath(path) {
       // 前进添加新的url
       state.history.push(path);
-      state.event = "enter";
-      localStorage.setItem("routerTransiton", state.style[state.event]);
+      state.event = 'enter';
+      localStorage.setItem('routerTransiton', state.style[state.event]);
     },
     popPath() {
       // 后退删除url

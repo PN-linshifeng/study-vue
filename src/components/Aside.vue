@@ -259,7 +259,7 @@ export default {
         top: 0;
         bottom: 0px;
         margin: auto 0;
-        content: "";
+        content: '';
         display: block;
         width: 10px;
         height: 10px;

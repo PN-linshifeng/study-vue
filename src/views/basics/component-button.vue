@@ -4,7 +4,7 @@
     <button v-on:click="handleAdd">你点击了{{count}}次</button>
     <div v-html="content"></div>
     <h2>在组件上使用 v-model</h2>
-    <input type="text" v-bind:value="names" v-on:input="$emit('onName', $event.target.value)" />
+    <input type="text" v-bind:value="names" v-on:input="$emit('on-name', $event.target.value)" />
     {{names}}
     <p>他说：{{say}}</p>
   </div>

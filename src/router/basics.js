@@ -144,6 +144,16 @@ const basicsRoutes = [
         name: 'props',
         component: props,
       },
+      {
+        path: 'component',
+        name: 'component',
+        component: component,
+      },
+      {
+        path: 'props',
+        name: 'props',
+        component: props,
+      },
     ],
   },
 ];
