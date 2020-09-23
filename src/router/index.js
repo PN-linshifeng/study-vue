@@ -1,27 +1,27 @@
-import Vue from "vue";
-import Router from "vue-router";
-import Home from "@/views/Home";
-import About from "@/views/About";
-import Login from "@/views/Login";
-import BaseLayout from "@/layout/base";
-import BasicsRouter from "./basics";
-import Vuex from "./store";
-import routers from "./rou";
-import User from "./user";
-import Order from "./order";
-import Jiqiao from "./jiqiao";
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from '@/views/Home';
+import About from '@/views/About';
+import Login from '@/views/Login';
+import BaseLayout from '@/layout/base';
+import BasicsRouter from './basics';
+import Vuex from './store';
+import routers from './rou';
+import User from './user';
+import Order from './order';
+import Jiqiao from './jiqiao';
 
 export const route = [
   {
-    path: "/",
+    path: '/',
 
-    name: "首页s",
-    redirect: { name: "index" }, // 如果不做重定向控制台会警告
+    // name: '首页',
+    // redirect: { name: "index" }, // 如果不做重定向控制台会警告
     component: BaseLayout, // 公共页头页尾
     children: [
       {
-        path: "/",
-        name: "index",
+        path: '',
+        name: 'index',
         component: Home,
       }, // 首页main部分
       ...routers,
@@ -33,13 +33,13 @@ export const route = [
     ],
   },
   {
-    path: "/login",
-    name: "Login",
+    path: '/login',
+    name: 'Login',
     component: Login,
   },
   {
-    path: "/about",
-    name: "about",
+    path: '/about',
+    name: 'about',
     component: About,
   },
 ];
@@ -48,7 +48,7 @@ Vue.use(Router);
 // 路由url
 
 const router = new Router({
-  mode: "history",
+  mode: 'history',
   routes: route,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -62,11 +62,11 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.path === "/login") {
+  if (to.path === '/login') {
     next();
-  } else if (localStorage.getItem("token") === null) {
+  } else if (localStorage.getItem('token') === null) {
     next({
-      path: "/login",
+      path: '/login',
       query: {
         redirect: to.fullPath,
       },
@@ -90,17 +90,17 @@ router.beforeEach((to, from, next) => {
 // });
 
 // 路由器过渡 使用localStorage记录状态  也可以用状态管理
-const historyRouter = (function() {
+const historyRouter = (function () {
   const state = {
-    event: "enter", // 记录enter或者leave。默认进入
+    event: 'enter', // 记录enter或者leave。默认进入
     style: {
-      enter: "view-left", // 进入的样式
-      leave: "view-right", // 退出的样式
+      enter: 'view-left', // 进入的样式
+      leave: 'view-right', // 退出的样式
     },
     history: [], // history url 集合
   };
   // 设置localStorage
-  localStorage.setItem("routerTransiton", state.style[state.event]);
+  localStorage.setItem('routerTransiton', state.style[state.event]);
   return {
     state,
     pushPath(path) {
@@ -112,8 +112,8 @@ const historyRouter = (function() {
     popPath() {
       // 后退删除url
       state.history.pop();
-      state.event = "leave";
-      localStorage.setItem("routerTransiton", state.style[state.event]);
+      state.event = 'leave';
+      localStorage.setItem('routerTransiton', state.style[state.event]);
     },
   };
 })();

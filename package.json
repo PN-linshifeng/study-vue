@@ -4,23 +4,13 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-<<<<<<< HEAD
     "serve:mock": "cross-env MOCK=yes vue-cli-service serve",
-=======
-    "serve:no-mock": "cross-env VUE_APP_MOCK=none vue-cli-service serve",
->>>>>>> 84794716ab5dd06389c60adbd1701d6e8a72dac0
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "fix": "eslint  --fix --ext .vue src"
   },
   "dependencies": {
-<<<<<<< HEAD
     "element-ui": "^2.13.1",
-=======
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.19.0",
->>>>>>> 84794716ab5dd06389c60adbd1701d6e8a72dac0
     "highlight.js": "^9.12.0",
     "jquery": "^3.5.1",
     "lodash": "^4.17.15",
@@ -37,7 +27,6 @@
     "axios": "^0.19.2",
     "axios-mock-adapter": "^1.17.0",
     "cross-env": "^7.0.2",
-<<<<<<< HEAD
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
@@ -50,12 +39,6 @@
     "mocker-api": "^1.14.0",
     "mockjs": "^1.1.0",
     "node-sass": "^4.14.1",
-=======
-    "eslint-config-airbnb": "^18.1.0",
-    "mocker-api": "^1.9.0",
-    "mockjs": "^1.1.0",
-    "node-sass": "^4.9.0",
->>>>>>> 84794716ab5dd06389c60adbd1701d6e8a72dac0
     "path": "^0.12.7",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.16",

@@ -141,7 +141,7 @@ const basicsRoutes = [
       },
       {
         path: '/props',
-        name: 'props',
+        name: 'props1',
         component: props,
       },
       {
@@ -151,7 +151,7 @@ const basicsRoutes = [
       },
       {
         path: 'props',
-        name: 'props',
+        name: 'props2',
         component: props,
       },
     ],
