@@ -1,9 +1,9 @@
 <template>
   <div>
-    <p>{{attrA}}</p>
-    <p>{{attrB}}</p>
-    <p>{{attrC}}</p>
-    <p>{{attrD}}</p>
+    <span>{{attrA}}</span>，
+    <span>{{attrB}}</span>，
+    <span>{{attrC}}</span>，
+    <span>{{attrD}}</span>
   </div>
 </template>
 <script>

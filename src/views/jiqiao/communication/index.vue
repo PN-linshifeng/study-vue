@@ -1,11 +1,21 @@
 <template>
   <div>
-    <h1>$props</h1>
+    <props />
+    <emit />
+    <parent-children />
+    <h1>$props和$attr，批量传参</h1>
     <p>a组件传给b组件，b组件在参数传给c组件v-bind="$attrs"和v-bind="$props"。</p>
-    <p>$props：是把b组件定义的props参数传给C组件；$attr：是把A组件定义的参数传给C组件(class 和 style 除外)，但是不含有B组件定义的props参数</p>
-    <p>vm.$attrs 包含了父作用域中不作为 prop 被识别 (且获取) 的 attribute 绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 v-bind="$attrs" 传入内部组件</p>
+    <p>
+      $props：是把b组件定义的props参数传给C组件；$attr：是把A组件定义的参数传给C组件(class 和 style
+      除外)，但是不含有B组件定义的props参数
+    </p>
+    <p>
+      vm.$attrs 包含了父作用域中不作为 prop 被识别 (且获取) 的 attribute 绑定 (class 和 style
+      除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过
+      v-bind="$attrs" 传入内部组件
+    </p>
     <p>例如：a组件参数v传给b，b组件在props定义了v属性，那么v性不能通过$attr传给c组件</p>
-    <e-b attrA="attrA" attrB="attrB" attrC="attrC" attrD="attrD" a="a" b="b" c="c" />
+    <e-b attrA="attrA" attrB="attrB" attrC="attrC" attrD="attrD" a="a" b="b" c="c" class="demo" />
     <div>
       a组件
       <pre class="html" name="code" type="html" v-highlight>
@@ -37,10 +47,10 @@
       <pre class="html" name="code" type="html" v-highlight>
         &lt;template&gt;
           &lt;div&gt;
-            &lt;p&gt;{{'attrA'}}&lt;/p&gt;
-            &lt;p&gt;{{'attrB'}}&lt;/p&gt;
-            &lt;p&gt;{{'attrC'}}&lt;/p&gt;
-            &lt;p&gt;{{'attrD'}}&lt;/p&gt;
+            &lt;p&gt;{{ 'attrA' }}&lt;/p&gt;
+            &lt;p&gt;{{ 'attrB' }}&lt;/p&gt;
+            &lt;p&gt;{{ 'attrC' }}&lt;/p&gt;
+            &lt;p&gt;{{ 'attrD' }}&lt;/p&gt;
           &lt;/div&gt;
         &lt;/template&gt;
         &lt;script&gt;
@@ -59,8 +69,11 @@
 </template>
 <script>
 import eB from './component/b';
+import Props from './component/props';
+import Emit from './component/emit';
+import ParentChildren from './component/parent-children';
 
 export default {
-  components: { eB },
+  components: { eB, Props, Emit, ParentChildren },
 };
 </script>
