@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>props 传参数</h1>
+    <h1>{{ h }}props 传参数</h1>
     <p>父组件通过属性传给子组件</p>
-    <child attrA="参数A" :attrB="[123,543]" class="demo" />
+    <child attrA="参数A" :attrB="[123, 543]" class="demo" />
     <pre class="js" name="code" type="view" v-highlight v-pre>
       // 父组件
        &lt;child attrA=&quot;参数A&quot; :attrB=&quot;[123,543]&quot; class=&quot;demo&quot; /&gt;
@@ -16,7 +16,7 @@
           attrB: { required: false, type: [String, Array], default: 'a' }
         },
         template: `
-           &lt;div&gt;{{attrA}},{{attrB}}&lt;/div&gt;
+           &lt;div&gt;{{ attrA }},{{ attrB }}&lt;/div&gt;
         `
       };
       export default {
@@ -45,6 +45,7 @@ export default {
   data() {
     return { dd: 12 };
   },
+  props: { h: String },
   components: { child },
 };
 </script>

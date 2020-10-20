@@ -6,19 +6,19 @@
     <p>text：使用model默认值；checkbox和radio：使用checked值和change事件；select：使用input值和change事件</p>
     <div>
       <input-text v-model="value" />
-      {{value}}
+      {{ value }}
     </div>
     <p>
       单选
       <br />
       <checkbox v-model="danxuan" value="a"></checkbox>
-      {{danxuan}}
+      {{ danxuan }}
     </p>
     <p>
       单选s
       <br />
       <checkbox v-model="danxuan2" true-value="yes" false-value="no"></checkbox>
-      {{danxuan2}}
+      {{ danxuan2 }}
     </p>
     <p>
       复选框
@@ -26,7 +26,7 @@
       <checkbox v-model="checkbox" value="a"></checkbox>a
       <checkbox v-model="checkbox" value="b"></checkbox>
       b
-      {{checkbox}}
+      {{ checkbox }}
     </p>
     <p></p>
     <p>
@@ -35,14 +35,14 @@
       <radio v-model="radio" name="水果" value="苹果" />苹果
       <radio v-model="radio" name="水果" value="梨子" />
       梨子
-      {{radio}}
+      {{ radio }}
     </p>
     <p>
       <selectList v-model="select">
         <option value="a">a</option>
         <option value="b">b</option>
       </selectList>
-      {{select}}
+      {{ select }}
     </p>
   </div>
 </template>
