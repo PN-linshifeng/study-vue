@@ -2,11 +2,13 @@ const delay = require('mocker-api/utils/delay'); // 延迟请求
 const Mock = require('mockjs');
 
 let dataList = {};
+let i = 0;
 function queryList(req, res, next) {
+  console.log(i++);
   try {
     const { id, page = 1 } = req.query;
     if (id) {
-      const filterData = dataList.data.filter(k => {
+      const filterData = dataList.data.filter((k) => {
         return k.ids.toString().indexOf(id) >= 0;
       });
       dataList = Mock.mock({
@@ -59,17 +61,15 @@ function queryList(req, res, next) {
 function getInfo(req, res) {
   const { id } = req.params;
 
-  const data = (dataList.data && dataList.data.filter(item => item.id == id)) || [];
+  const data = (dataList.data && dataList.data.filter((item) => item.id == id)) || [];
 
-  return data.length > 0
-    ? res.json({ ...data[0] })
-    : res.status(404).json({ message: '查找不到订单' });
+  return data.length > 0 ? res.json({ ...data[0] }) : res.status(404).json({ message: '查找不到订单' });
 }
 
 function logistics(req, res, next) {
   try {
     const { id, number } = req.body;
-    const index = dataList.data.findIndex(k => k.id === id);
+    const index = dataList.data.findIndex((k) => k.id === id);
     if (index >= 0) {
       dataList.data[index].logistics.number = number;
     } else {
@@ -85,7 +85,7 @@ function logistics(req, res, next) {
 // 退货
 function returnOrder(req, res) {
   const { id, order } = req.body;
-  const index = dataList.data.findIndex(k => k.id === id);
+  const index = dataList.data.findIndex((k) => k.id === id);
   if (index >= 0) {
     const item = dataList.data[index].order;
     for (let i = 0; i < item.length; i += 1) {

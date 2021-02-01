@@ -3,9 +3,15 @@
     <div class="bg"></div>
     <div class="main">
       <h1>登录</h1>
-      <el-form ref="form" :model="form" :rules="rules" v-on:submit.native.prevent="submit">
+      <el-form
+        ref="form"
+        :model="form"
+        status-icon
+        :rules="rules"
+        v-on:submit.native.prevent="submit"
+      >
         <el-form-item prop="userName">
-          <el-input v-model="form.userName" placeholder="请输入内容"></el-input>
+          <el-input v-model="form.userName" placeholder="请输入内容" @blur="handleBlur"></el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input show-password v-model="form.password" placeholder="请输入内容"></el-input>
@@ -21,10 +27,28 @@
 export default {
   name: 'Login',
   data() {
+    var checkAge = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error('年龄不能为空'));
+      }
+      setTimeout(() => {
+        if (!Number.isInteger(value)) {
+          callback(new Error('请输入数字值'));
+        } else {
+          if (value < 18) {
+            callback(new Error('必须年满18岁'));
+          } else {
+            callback();
+          }
+        }
+      }, 1000);
+    };
     return {
+      error: false,
+      massage: 'xxxx',
       form: { userName: '', password: '' },
       rules: {
-        userName: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+        // userName: [{ trigger: 'blur', validator: checkAge }],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
       },
     };
@@ -35,13 +59,14 @@ export default {
     },
   },
   methods: {
+    handleBlur() {},
     submit() {
-      this.$refs.form.validate(valid => {
+      this.$refs.form.validate((valid) => {
         // this.$store.dispatch('todo/done');
         if (valid) {
           this.$store.dispatch('login/login', {
             data: this.form,
-            callback: resp => {
+            callback: (resp) => {
               if (resp) {
                 const { redirect } = this.$route.query;
                 this.$message({ message: '登录成功', type: 'success' });

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/views/Home';
 import About from '@/views/About';
+import Video from '@/views/video';
 import Login from '@/views/Login';
 import BaseLayout from '@/layout/base';
 import BasicsRouter from './basics';
@@ -42,6 +43,11 @@ export const route = [
     name: 'about',
     component: About,
   },
+  {
+    path: '/video',
+    name: 'video',
+    component: Video,
+  },
 ];
 Vue.use(Router);
 
@@ -62,7 +68,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/login') {
+  if (to.path === '/login' || to.path === '/video') {
     next();
   } else if (localStorage.getItem('token') === null) {
     next({

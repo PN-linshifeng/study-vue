@@ -5,7 +5,7 @@
       <button @click="add">添加</button>
       <button @click="random">变换</button>
     </div>
-    <p v-for="k of arr">
+    <p v-for="k of arr" :key="k">
       <input type="checkbox" />
       {{k}}
     </p>--------

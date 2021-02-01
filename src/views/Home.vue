@@ -1,13 +1,59 @@
 <template>
-  <div class="home">Home</div>
+  <div class="home">
+    <div>home</div>
+    <VueVideoTape
+      :playerOptions="options"
+      ref="videotape"
+      @imageData="imageData"
+      @videoData="videoData"
+    ></VueVideoTape>
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import VueVideoTape from 'vue-video-tape';
 
 export default {
   name: 'home',
-  components: {},
+  data() {
+    return {
+      options: {
+        width: 600,
+        sources: [
+          {
+            src: 'http://.........',
+          },
+        ],
+      },
+    };
+  },
+  created() {
+    this.start();
+  },
+  methods: {
+    image() {
+      //截图
+      this.$refs.videotape.screenshot();
+    },
+    start() {
+      //开始录制
+      this.$refs.videotape.startCapture();
+    },
+    stop() {
+      //结束录制
+      this.$refs.videotape.stopCapture();
+    },
+
+    //截图成功回调事件
+    imageData(base64) {},
+
+    //录制成功回调事件
+    videoData(url, file) {},
+  },
+  components: {
+    VueVideoTape,
+  },
 };
 </script>
 <style lang="scss">
